@@ -1,0 +1,17 @@
+!!!
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    -each script in scripts 
+          script(src= script)
+  body
+    h1= title
+
+    input#text(type="text")
+    br
+    button#submit Unleash the carrier pigeons!
+
+    hr
+
+    ul#messages
