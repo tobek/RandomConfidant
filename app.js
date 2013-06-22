@@ -33,6 +33,7 @@ if ('development' == app.get('env')) {
 
 app.get('/', routes.index);
 
+io.set('log level', 1); // reduce logging
 io.sockets.on('connection', function (socket) {
   socket.on('submit', function (data, fn) {
     var msg = sanitize(data.message).xss();

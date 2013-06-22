@@ -3,14 +3,15 @@ html
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
-    -each script in scripts 
-          script(src= script)
+    -each script in scripts
+      script(src= script)
   body
     div#top
       h1= title
 
-      input#text(type="text")
-      br
-      button#submit Unleash the carrier pigeons!
+      form
+        input#text(type="text")
+        br
+        input#submit(type="submit",value="Unleash the carrier pigeons!")
 
     ul#messages

@@ -3,17 +3,20 @@
 var socket = io.connect('http://localhost');
 
 $(function() { // upon DOM load
-  $("#submit").click(function(){
-    console.log('submitting message '+$("#text").val());
-    socket.emit('submit', { message: $("#text").val() }, function(err){
+  $("#submit").click(function(e){
+    e.preventDefault();
+    var msg = $("#text").val();
+    console.log('submitting message ' + msg);
+    socket.emit('submit', { message: msg }, function(err){
       if (err) {
         console.log('something went wrong: ' + err);
       }
       else {
         console.log('server received message');
-        printMessage($("#text").val());
+        printMessage(msg);
       }
     });
+    $("#text").val(""); // clear it
   })
 });
 
@@ -23,5 +26,5 @@ socket.on('received', function (data) {
 });
 
 function printMessage(msg) {
-  $("#messages")[0].innerHTML += '<li>' + msg + '</li>';
+  $("#messages")[0].innerHTML = '<li>' + msg + '</li>' + $("#messages")[0].innerHTML;
 }
