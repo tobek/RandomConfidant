@@ -16,7 +16,6 @@ exports.index = function(req, res){
     res.render('index', view);
   }
   else {
-    //res.send('You need to <a href="/login">login</a>.');
     common.mysql.query("SELECT * FROM users", function(err, results){
       if (err) throw err;
       view.users = results;

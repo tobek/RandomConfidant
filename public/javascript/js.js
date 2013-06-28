@@ -17,7 +17,7 @@ $(function() { // upon DOM load
 
   $("#submit").click(function(e){
     e.preventDefault();
-    var msg = $("#text").val();
+    var msg = $("#startConvo .msg").val();
     console.log('submitting message ' + msg);
     socket.emit('submit', { message: msg }, function(err){
       if (err) {
@@ -28,7 +28,7 @@ $(function() { // upon DOM load
         printMessage(msg);
       }
     });
-    $("#text").val(""); // clear it
+    $("#startConvo .msg").val(""); // clear it
   })
 
 });

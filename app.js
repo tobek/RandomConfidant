@@ -25,7 +25,7 @@ app.use(express.methodOverride());
 app.use(require('less-middleware')({ src: __dirname + '/public' }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(clientSessions({
-  secret: 'YFoay9o1VKJkR17mTvnpyGajleuhLwlzuTeoiFUG', // random string
+  secret: 'YFoay9o1VKJkR17mTvnpyGajleuhLwlzuTeoiFUG', // random string. TODO: CHANGE ME FOR GOD'S SAKE
   cookieName: "sesh",
   duration: 7 * 24 * 60 * 60 * 1000 // 1 week. how long the session will stay valid in ms
   // TODO check/ensure this gets renewed every time you visit
@@ -55,20 +55,3 @@ app.get('/logout', controllers.logout);
 server.listen(app.get('port'), function(){
   console.log('Listening on port ' + app.get('port'));
 });
-
-
-/*
-
-app.use(function(req, res, next) {
-  if (req.session.seenyou) {
-    console.log("header set");
-    res.setHeader('X-Seen-You', 'true');
-  } else {
-    console.log("setting header");
-    // setting a property will automatically cause a Set-Cookie response to be sent
-    req.session.seenyou = true;
-    res.setHeader('X-Seen-You', 'false');
-    console.log("set the header");
-  }
-});
-*/
