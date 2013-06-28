@@ -5,13 +5,30 @@ html
     link(rel='stylesheet', href='/stylesheets/style.css')
     -each script in scripts
       script(src= script)
-  body
-    div#top
-      h1= title
+  if username
+    body.logged-in
+  else
+    body
 
-      form
-        input#text(type="text")
-        br
-        input#submit(type="submit",value="Unleash the carrier pigeons!")
+  div#top
+    h1= title
 
-    ul#messages
+    if users
+      div#pickUser.show-logged-out
+        h3 Pick a user:
+        ul
+          -each user in users
+            li(data-id=user.id)= user.name
+
+    p#welcome-msg.show-logged-in Hi 
+      span.name= username
+      . 
+      a.logout(href="/logout") Logout
+      .
+
+    form#startConvo.show-logged-in
+      input.msg(type="text")
+      br
+      input#submit(type="submit",value="Unleash the carrier pigeons!")
+
+  ul#messages

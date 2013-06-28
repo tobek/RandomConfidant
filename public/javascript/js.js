@@ -3,6 +3,18 @@
 var socket = io.connect('http://localhost');
 
 $(function() { // upon DOM load
+
+  $("#pickUser li").click(function(e) {
+    $.getJSON("/login?id=" + $(e.target).attr("data-id"), function(data){
+      if (data.error) {
+        alert("Failed to log in: " + data.error);
+        return;
+      };
+      $("#welcome-msg .name").html(data.name);
+      $("body").attr("class", "logged-in");
+    });
+  });
+
   $("#submit").click(function(e){
     e.preventDefault();
     var msg = $("#text").val();
@@ -18,6 +30,7 @@ $(function() { // upon DOM load
     });
     $("#text").val(""); // clear it
   })
+
 });
 
 socket.on('received', function (data) {

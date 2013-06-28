@@ -1,25 +1,48 @@
+@light: lightgoldenrodyellow;
+@dark: lightseagreen;
+
 body {
   margin: 0;
   padding: 0;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-color: lightgoldenrodyellow;
-}
-
-h1 {
-  color: lightgoldenrodyellow;
-}
-
-#text {
-  width: 400px;
+  background-color: @light;
 }
 
 #top {
   padding: 5em 5em 2em 5em;
-  background-color: lightseagreen;
-  border-bottom: 5px lightgoldenrodyellow dashed;
+  background-color: @dark;
+  border-bottom: 5px @light dashed;
 }
 
-#messages {
+h1 {
+  color: @light;
+}
+
+.show-logged-out { display: block; }
+.show-logged-in { display: none; }
+.logged-in .show-logged-out { display: none; }
+.logged-in .show-logged-in { display: block; }
+
+#pickUser {
+  ul {
+    list-style: none;
+    li {
+      cursor: pointer;
+      &:hover {
+        color: @light;
+      }
+    }
+  }
+}
+
+#startConvo {
+  .msg {
+    width: 400px;
+  }
+}
+
+
+ul#messages {
   margin: 0;
   padding: 1.5em 5em;
   list-style: none;
