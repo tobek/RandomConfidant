@@ -10,18 +10,20 @@ exports.index = function(req, res){
     title: 'Random Confidant',
     scripts: ["/socket.io/socket.io.js", "//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js", "/javascript/js.js"],
   };
+  
+  res.render('index', view);
 
-  if (req.sesh.username) {
-    view.username = req.sesh.username;
-    res.render('index', view);
-  }
-  else {
-    common.mysql.query("SELECT * FROM users", function(err, results){
-      if (err) throw err;
-      view.users = results;
-      res.render('index', view);
-    });
-  }
+  // if (req.sesh.username) {
+  //   view.username = req.sesh.username;
+  //   res.render('index', view);
+  // }
+  // else {
+  //   common.mysql.query("SELECT * FROM users", function(err, results){
+  //     if (err) throw err;
+  //     view.users = results;
+  //     res.render('index', view);
+  //   });
+  // }
 
 };
 

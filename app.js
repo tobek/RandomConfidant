@@ -7,7 +7,7 @@ var express = require('express')
   , path = require('path')
   , io = require('socket.io')
   , jade = require('jade')
-  , clientSessions = require("client-sessions")
+  // , clientSessions = require("client-sessions")
   , sanitize = require('validator').sanitize;
 
 var app = express()
@@ -24,13 +24,13 @@ app.use(express.bodyParser());
 app.use(express.methodOverride());
 app.use(require('less-middleware')({ src: __dirname + '/public' }));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(clientSessions({
-  secret: 'YFoay9o1VKJkR17mTvnpyGajleuhLwlzuTeoiFUG', // random string. TODO: CHANGE ME FOR GOD'S SAKE
-  cookieName: "sesh",
-  duration: 7 * 24 * 60 * 60 * 1000 // 1 week. how long the session will stay valid in ms
-  // TODO check/ensure this gets renewed every time you visit
-  // TODO accommodate "don't remember me" setting
-}));
+// app.use(clientSessions({
+//   secret: 'YFoay9o1VKJkR17mTvnpyGajleuhLwlzuTeoiFUG', // random string. TODO: CHANGE ME FOR GOD'S SAKE
+//   cookieName: "sesh",
+//   duration: 7 * 24 * 60 * 60 * 1000 // 1 week. how long the session will stay valid in ms
+//   // TODO check/ensure this gets renewed every time you visit
+//   // TODO accommodate "don't remember me" setting
+// }));
 app.use(app.router); // has to come after clientSessions
 
 // development only
@@ -49,8 +49,8 @@ io.sockets.on('connection', function (socket) {
 });
 
 app.get('/', controllers.index);
-app.get('/login', controllers.login);
-app.get('/logout', controllers.logout);
+// app.get('/login', controllers.login);
+// app.get('/logout', controllers.logout);
 
 server.listen(app.get('port'), function(){
   console.log('Listening on port ' + app.get('port'));
