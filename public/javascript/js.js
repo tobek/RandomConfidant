@@ -39,5 +39,5 @@ socket.on('received', function (data) {
 });
 
 function printMessage(msg) {
-  $("#messages")[0].innerHTML = '<li>' + msg + '</li>' + $("#messages")[0].innerHTML;
+  $("#messages")[0].innerHTML = '<li><input type="submit" value="Respond" class="respond-button">' + msg + '</li>' + $("#messages")[0].innerHTML;
 }

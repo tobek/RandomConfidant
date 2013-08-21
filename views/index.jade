@@ -11,7 +11,7 @@ html
     body
 
   div#top
-    h1= title
+    h1.site-title= title
 
     //-if users
       div#pickUser.show-logged-out
@@ -27,8 +27,11 @@ html
       .
 
     form#startConvo
-      input.msg(type="text")
+      textarea.msg
       br
-      input#submit(type="submit",value="Unleash the carrier pigeons!")
+      input#submit(type="submit", value="Am I?")
 
-  ul#messages
+  div.bottom-half
+    h2.sub-title Are they?
+
+    ul#messages

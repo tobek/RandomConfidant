@@ -7,10 +7,10 @@ var common = require('../lib/common.js');
 exports.index = function(req, res){
 
   var view = {
-    title: 'Random Confidant',
+    title: 'Am I fucked up?',
     scripts: ["/socket.io/socket.io.js", "//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js", "/javascript/js.js"],
   };
-  
+
   res.render('index', view);
 
   // if (req.sesh.username) {
